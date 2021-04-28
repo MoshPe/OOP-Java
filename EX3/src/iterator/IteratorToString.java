@@ -4,14 +4,11 @@ public class IteratorToString {
 
 	public static String toString(MyIterator it) {
 		StringBuilder returnString = new StringBuilder();
-		returnString.append("[ ");
+		returnString.append("[");
 		while(it.hasNext()) 
 			returnString.append(it.next() + " ");
+		returnString.deleteCharAt(returnString.length()-1);
 		returnString.append(']');
 		return returnString.toString();
-	}
-	
-	public static void main(String[] argc) {
-		System.out.println(IteratorToString.toString(new Fibonacci(13)));		
 	}
 }
