@@ -1,0 +1,45 @@
+package Game;
+
+import java.util.Scanner;
+
+public class Game extends Board {
+	protected Player[] players;
+	protected Scanner s;
+
+	public Game(int n, int m, Player p1, Player p2) {
+		super(n, m);
+		this.players = new Player[2];
+		players[0] = p1;
+		players[1] = p2;
+		this.s = new Scanner(System.in);
+	}
+
+	protected boolean doesWin(int i, int j) {
+		return (i == 0 && j == 0);
+	}
+
+	protected boolean onePlay(Player p) {
+		int x, y;
+		while (true) {
+			System.out.print(p + ",Please enter x and y: ");
+			x = s.nextInt();
+			y = s.nextInt();
+			if (!this.isEmpty(x, y))
+				System.out.print("There is a place there already");
+			else {
+				this.set(x, y, p);
+				return doesWin(x, y);
+			}
+		}
+	}
+
+	public Player play() {
+		while (!this.isFull()) {
+			if (this.onePlay(players[0]))
+				return players[0];
+			if (this.onePlay(players[1]))
+				return players[0];
+		}
+		return null;
+	}
+}

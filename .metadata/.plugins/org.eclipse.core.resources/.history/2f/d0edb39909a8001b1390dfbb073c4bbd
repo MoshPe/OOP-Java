@@ -1,0 +1,11 @@
+package fghfgh;
+
+public class Main {
+	public static void main(String[] argc) {
+		Reporter r = new AverageReporter();
+		r.addNumber(10);
+		r.addNumber(20);
+		r.addNumber(60);
+		System.out.println(r.report());
+	}
+}

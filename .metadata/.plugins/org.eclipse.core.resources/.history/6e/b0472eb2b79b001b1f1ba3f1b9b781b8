@@ -1,0 +1,39 @@
+package game;
+
+public class FourInARow extends Game {
+
+	public FourInARow(String player1, String player2) {
+		super(2, 2, new Player(player1, 'W'), new Player(player2, 'B'));
+	}
+
+	@Override
+	protected boolean doesWin(int i, int j) {
+		return maxLineContaining(i, j) == 4;
+	}
+
+	@Override
+	protected boolean onePlay(Player p) {
+		int col, count;
+		while (true) {
+			count = 0;
+			System.out.print(p + ",Please enter a column to play: ");
+			col = s.nextInt();
+			while (count != n && isEmpty(count, col))
+				count++;
+			if (count != 0) {
+				set(count - 1, col, p);
+				System.out.println(this);
+				return doesWin(count - 1, col);
+			}
+
+			else
+				System.out.println("The column is full");
+		}
+	}
+	
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		FourInARow a= new FourInARow("Tal", "Moshe");
+//		System.out.println("The winner is:"+a.play());
+//	}
+}

@@ -1,0 +1,13 @@
+package Tree;
+
+public class Forest {
+	private Tree[] trees;
+	
+	
+	public Forest(Tree[] trees) {
+		this.trees = trees;
+	}
+	
+	
+
+}

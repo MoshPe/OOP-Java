@@ -1,0 +1,39 @@
+package circuits;
+
+public class AndGate extends Gate {
+	private static final String AND_GATE = "AND";
+	
+	public AndGate(Gate[] inGates) {
+		super(inGates);
+	}
+
+	@Override
+	protected boolean func(boolean[] inValues) {
+		for (boolean bool : inValues)
+			if(bool == false)
+				return false;
+		return true;
+	}
+
+	@Override
+	public String getName() {
+		return AND_GATE;
+	}
+
+	@Override
+	public Gate simplify() {
+		boolean isTrue = true, isNull = false;
+		Gate temp;
+		for (Gate gate : inGates) {
+			if(gate.simplify() == FalseGate.instance())
+				isTrue = false;
+			else if(gate.simplify() == null)
+				return this;
+			else
+				isNull = true;
+		}
+		if(isNull)
+			return this;
+		return (isTrue == true) ? TrueGate.instance() : FalseGate.instance();
+	}
+}

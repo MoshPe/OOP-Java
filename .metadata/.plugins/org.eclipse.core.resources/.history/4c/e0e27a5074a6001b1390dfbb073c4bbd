@@ -1,0 +1,24 @@
+package circuits;
+
+public class Gate {
+	protected Gate[] inGates;
+	
+	public Gate(Gate[] inGates) {
+		this.inGates = inGates;
+	}
+	
+	public boolean calc() {
+		
+	}
+
+	protected abstract boolean func(boolean[] inValues);
+	
+	public abstract String getName();
+	
+	public abstract Gate simplify();
+	
+	public String toString() {
+		
+	}
+	
+}

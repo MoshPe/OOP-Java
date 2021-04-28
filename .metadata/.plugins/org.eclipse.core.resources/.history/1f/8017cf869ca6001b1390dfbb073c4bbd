@@ -1,0 +1,29 @@
+package circuits;
+
+public class TrueGate  {
+	private static final String TRUE_GATE = "T";
+	
+	private TrueGate();
+	
+	public static Gate instance() {
+		return this;
+	}
+	
+	@Override
+	protected boolean func(boolean[] inValues) {
+		return true;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Gate simplify() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

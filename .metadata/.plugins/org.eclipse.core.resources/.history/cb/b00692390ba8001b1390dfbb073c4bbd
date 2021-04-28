@@ -1,0 +1,16 @@
+package fghfgh;
+
+public class Util {
+	public static void reportAll(int[] a, Reporter[] rs) {
+		for (int i = 0; i < a.length; i++) {
+			for (int j = a.length - i; j < a.length; j++) {
+				
+				
+			}
+		}
+		
+		
+		
+		
+	}
+}

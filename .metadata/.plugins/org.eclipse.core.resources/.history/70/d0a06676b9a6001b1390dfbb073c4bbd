@@ -1,0 +1,34 @@
+package circuits;
+
+public class VarGate extends Gate {
+	private String name;
+	private Boolean value;
+		
+	public VarGate(String name) {
+		super(null);
+		this.name = name;
+		value = null;
+	}
+
+	@Override
+	protected boolean func(boolean[] inValues) {
+		if(value != null)
+			return value;
+		return (Boolean) null;
+	}
+	
+	public void setVal(boolean value) {
+		this.value = value;
+	}
+
+	@Override
+	public String getName() {
+		return "V" + name;
+	}
+
+	@Override
+	public Gate simplify() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

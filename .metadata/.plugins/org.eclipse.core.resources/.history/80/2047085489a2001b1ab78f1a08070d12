@@ -1,0 +1,23 @@
+package Tree;
+
+public class FigTree extends Tree {
+	private static final String FIGG_TREE_NAME = "Fig";
+	private int maintain;
+	
+	public FigTree (int buyingCost, int maintain) {
+		super(buyingCost);
+		this.maintain = maintain;
+	}
+	
+	@Override
+	public String getName() {
+		return FIGG_TREE_NAME;
+	}
+
+	@Override
+	protected int costAtYear(int year) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

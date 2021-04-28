@@ -1,0 +1,19 @@
+package fghfgh;
+
+public class Main {
+	public static void main(String[] argc) {
+		Reporter r = new AverageReporter();
+		r.addNumber(10);
+		r.addNumber(20);
+		r.addNumber(60);
+		System.out.println(r.report());
+		
+		Reporter b = new MostCommonReporter(51);
+		b.addNumber(15);
+		b.addNumber(22);
+		b.addNumber(15);
+		System.out.println(b.report());
+		
+		Util.reportAll(new int[] { 3,50,50,4,4,4}, null);
+	}
+}

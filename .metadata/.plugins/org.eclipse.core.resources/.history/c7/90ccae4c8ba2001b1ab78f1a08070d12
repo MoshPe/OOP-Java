@@ -1,0 +1,19 @@
+package Tree;
+
+public class Forest {
+	private Tree[] trees;
+	
+	
+	public Forest(Tree[] trees) {
+		this.trees = trees;
+	}
+	
+	public int totalCost(int years) {
+		int sum = 0;
+		for (int i = 0; i < trees.length; i++)
+			sum += trees(i);
+		return sum;
+		}
+	}
+
+}

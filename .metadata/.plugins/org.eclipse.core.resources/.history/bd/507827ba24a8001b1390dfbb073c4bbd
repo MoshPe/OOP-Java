@@ -1,0 +1,8 @@
+package ex;
+
+public class main {
+	public static void main(String[] argc) {
+		Scorer[] ss = new Scorer[3];
+		
+	}
+}

@@ -1,0 +1,54 @@
+package tree;
+
+public class Node {
+	private int count;
+	private Node[] children;
+
+	public Node() {
+		count = 0;
+		children = new Node[26];
+	}
+
+	public void add(String s) {
+		if (s.equals("")) {
+			count++;
+			return;
+		}
+		if (children[s.charAt(0) - 'a'] == null)
+			children[s.charAt(0) - 'a'] = new Node();
+
+		children[s.charAt(0) - 'a'].add(s.substring(1));
+	}
+
+	public int num(String s) {
+
+		if (s.equals(""))
+			return count;
+		if (children[s.charAt(0) - 'a'] == null)
+			return 0;
+		return children[s.charAt(0) - 'a'].num(s.substring(1));
+	}
+	
+//	public static void main(String[] args) {
+//		Node root= new Node();
+//		root.add("c");
+//		root.add("c");
+//		root.add("ab");
+//		root.add("az");
+//		root.add("az");
+//		root.add("az");
+//		root.add("az");
+//		root.add("a");
+//		root.add("a");
+//		root.add("a");
+//		root.add("b");
+//		System.out.println(root.num("c"));
+//		System.out.println(root.num("az"));
+//		System.out.println(root.num("b"));
+//		System.out.println(root.num("a"));
+//		System.out.println(root.num("cc"));
+//		
+//	}
+	
+	
+}

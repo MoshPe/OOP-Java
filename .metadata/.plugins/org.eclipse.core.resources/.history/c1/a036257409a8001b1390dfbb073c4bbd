@@ -1,0 +1,22 @@
+package fghfgh;
+
+public class MostCommonReporter implements Reporter{
+	private int arr[];
+	
+	public MostCommonReporter(int num) {
+		arr = new int[num];
+	}
+	
+	@Override
+	public void addNumber(int num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int report() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

@@ -1,0 +1,5 @@
+package circuits;
+
+public class Or2Gate extends OrGate{
+
+}

@@ -1,0 +1,37 @@
+package tree;
+
+import java.util.Scanner;
+
+//this class demonstrate the use of Node class
+public class ReversedWords {
+
+	// this function reverse the given string and return it to the caller
+	private static String Reversed(String s) {
+		if (s.length() == 0)
+			return null;
+		String revString = "";
+		for (int i = s.length() - 1; i >= 0; i--)
+			revString += s.charAt(i);
+		return revString;
+	}
+
+	public static int checkReversed() {
+		int counter = 0;
+		String temp1, temp2;
+		Node nodeForWord = new Node();
+		Scanner word = new Scanner(System.in);
+		// while we have next word that don't equal to 'X'
+		while (word.hasNext() && !(word.hasNext("X"))) {
+			temp1 = word.next();
+			temp2 = new String();
+			temp2 = Reversed(temp1);
+			// if the reversed string appear in the tree (text), count it.
+			if (nodeForWord.num(temp2) != 0)
+				counter++;
+			// then add it to the tree
+			nodeForWord.add(temp1);
+		}
+		word.close();
+		return counter;
+	}
+}

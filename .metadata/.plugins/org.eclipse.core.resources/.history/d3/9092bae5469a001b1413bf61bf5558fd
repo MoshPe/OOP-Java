@@ -1,0 +1,135 @@
+package Game;
+
+import java.lang.StringBuilder;
+import java.lang.Math;
+
+public class Board {
+	protected Player[][] board;
+	protected int n,m;
+	
+	public Board(int n, int m) {
+		this.n = n;
+		this.m = m;
+		this.board = new Player[n][m];
+	}
+	
+	protected boolean set(int i, int j, Player p) {
+		if(!isEmpty(i,j))
+			return false;
+		board[i][j] = p;
+		return true;
+	}
+	
+	public boolean isEmpty(int i, int j) {
+		if(board[i][j] == null)
+			return true;
+		return false;
+	}
+	
+	public Player get(int i, int j) {
+		return board[i][j];
+	}
+	
+	public boolean isFull() {
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < m;j++) {
+				if(board[i][j] == null)
+					return false;
+				}
+			}
+		return true;
+	}
+	
+	public String toString() {
+		StringBuilder returnBoard = new StringBuilder();
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < m;j++) {
+				if(board[i][j] == null)
+					returnBoard.append('.');
+				else
+					returnBoard.append(board[i][j].getMark());
+				}
+			returnBoard.append('\n');
+			}
+		return returnBoard.toString();
+	}
+
+	protected int maxLineContaining(int i, int j) {
+		int horizontal = getPlayerAppearances(board[i],m,board[i][j]);
+		int vertical = getPlayerAppearances(getColumn(j),n,board[i][j]);
+		
+		int mainDiagonal = getPlayerAppearances(getMainDiagonal(i,j),n+m,board[i][j]);
+		int secondaryDiagonal = getPlayerAppearances(getColumn(j),n+m,board[i][j]);
+		
+	}
+	
+	
+	private Player[] getSecondaryDiagonal(int row, int col) {
+		int diagonalMaxSize = Math.min(n, m);
+		int colReset = ((col + row ) >= m)? m - 1 : col + row;//3 + 2 =  5
+		int rowReset = ((row - (colReset - col)) < 0)? 0 : row - (colReset - col);
+		Player column[] = new Player[diagonalMaxSize];
+		//running on the mainDiagonal
+		for (int i = 0; i < diagonalMaxSize; i++)
+			column[i] = board[rowReset - i][colReset - i];
+		return column;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private Player[] getMainDiagonal(int row, int col) {
+		int diagonalMaxSize = Math.min(n, m);
+		int colReset = ((col - row )< 0)? 0 : col - row;
+		int rowReset = ((row - col )< 0)? 0 : row - col;
+		Player column[] = new Player[diagonalMaxSize];
+		//running on the mainDiagonal
+		for (int i = 0; i < diagonalMaxSize; i++)
+			column[i] = board[rowReset + i][colReset + i];
+		return column;
+	}
+	
+	
+	
+	private Player[] getColumn(int j) {
+		Player column[] = new Player[n];
+		for (int i = 0; i < n; i++)
+			column[i] = board[i][j];
+		return column;
+	}
+	
+	private int getPlayerAppearances(Player arr[],int index, Player p) {
+		if(index == 0)
+			return 0;
+		if(arr[index-1] == p)
+			return 1 + getPlayerAppearances(arr,--index,p); 
+		return getPlayerAppearances(arr,--index,p); 		
+	}
+	
+	
+	public static void main(String[] args) {
+		Player p1 = new Player("Bibi", 'B');
+		Player p2 = new Player("Gantz", 'G');
+		Board b = new Board(3, 4);
+
+		b.set(0, 0, p1);
+		b.set(1, 0, p1);
+		b.set(2, 2, p2);
+		b.set(0, 0, p2);
+		b.set(0, 1, p1);
+		
+		System.out.println(b.Horizontal(0, 0));
+		System.out.println(b.Horizontal(2, 2));
+		//System.out.println(b.Horizontal(0, 0));
+		System.out.println(b);
+		
+	}
+}

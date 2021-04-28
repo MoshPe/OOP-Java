@@ -1,0 +1,30 @@
+package iterator;
+
+public class Fibonacci  implements MyIterator {
+	private int upperBound;
+	private int a;
+	private int b;
+	public Fibonacci(int upperBound) {
+		this.upperBound = upperBound;
+		a = 0;
+		b = 1;
+	}
+	@Override
+	public boolean hasNext() { return b <= upperBound; }
+
+	@Override
+	public int next() {
+		if(!hasNext())
+			throw new IndexOutOfBoundsException();
+		b += a;
+		a = b;
+		return b;
+	}
+	/*
+	public static void main(String[] argc) {
+	int[] x = {2, 4, 6, 1};
+	MyIterator it = new MyArray(x);
+	while(it.hasNext())
+		System.out.print(it.next() + " ");
+	}*/
+}

@@ -1,0 +1,20 @@
+package circuits;
+
+public class And2Gate extends AndGate {
+	private Gate g1, g2;
+
+	public And2Gate(Gate g1, Gate g2) {
+		super(null);
+		this.g1 = g1;
+		this.g2 = g2;
+	}
+
+	@Override
+	protected boolean func(boolean[] inValues) {
+		if(g1.getName().equals("F") || g2.getName().equals("F"))
+			return false;
+		return true;
+	}
+
+
+}

@@ -1,0 +1,12 @@
+package function;
+
+public class square implements Function {
+
+	@Override
+	public int function(int n) {
+		return n * n;
+	}
+	
+	
+
+}

@@ -1,0 +1,12 @@
+package fghfgh;
+
+public class Util {
+	public static void reportAll(int[] a, Reporter[] rs) {
+		for (int i = 0; i < a.length; i++) {
+			System.out.println("a["+i+"] = " + a[i]);
+			for (int j = 0; j < i + 1; j++) {
+				rs[i].addNumber(a[j]);
+			}
+		}
+	}
+}

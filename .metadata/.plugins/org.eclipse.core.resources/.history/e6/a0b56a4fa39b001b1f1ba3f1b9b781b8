@@ -1,0 +1,128 @@
+package Game;
+
+import java.lang.StringBuilder;
+import java.lang.Math;
+
+public class Board {
+	protected Player[][] board;
+	protected int n,m;
+	
+	public Board(int n, int m) {
+		this.n = n;
+		this.m = m;
+		this.board = new Player[n][m];
+	}
+	
+	protected boolean set(int i, int j, Player p) {
+		if(!isEmpty(i,j))
+			return false;
+		board[i][j] = p;
+		return true;
+	}
+	
+	public boolean isEmpty(int i, int j) {
+		if(board[i][j] == null)
+			return true;
+		return false;
+	}
+	
+	public Player get(int i, int j) {
+		return board[i][j];
+	}
+	
+	public boolean isFull() {
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < m;j++) {
+				if(board[i][j] == null)
+					return false;
+				}
+			}
+		return true;
+	}
+	
+	public String toString() {
+		StringBuilder returnBoard = new StringBuilder();
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < m;j++) {
+				if(board[i][j] == null)
+					returnBoard.append('.');
+				else
+					returnBoard.append(board[i][j].getMark());
+				}
+			returnBoard.append('\n');
+			}
+		return returnBoard.toString();
+	}
+
+	protected int maxLineContaining(int i, int j) {
+		Player temp = board[i][j];
+		int horizontal = getHorizontal(j,board[i],m,temp);
+		int vertical = getHorizontal(i, getColumn(j),n,temp);
+		int mainDigonal = getDigonal(i,j,1,temp);
+		int secondaryDiagonal = getDigonal(i,j,-1,temp);  
+		return Math.max(Math.max(mainDigonal, secondaryDiagonal),Math.max(horizontal, vertical));
+	}
+	
+	private int getDigonal(int row, int col,int diagonalType, Player p) {
+		int upper = 0, down = 0;
+		for (int i = 0; col + diagonalType * i < m && row + i < n && board[row + i][col + diagonalType * i] == p; i++)
+					down++;
+		for (int i = 0; col + diagonalType * i >= 0 && row + i >= 0 && board[row + i][col + diagonalType * i] == p; i--)
+				upper++;
+		return down + upper - 1;
+	}
+	
+	private int getHorizontal(int indexStart,Player a[],int max,Player p) {
+		int left = 0, right = 0;
+		for (int i = indexStart; i < max && a[i] == p; i++)
+			right++;
+		for (int i = indexStart; i >= 0 && a[i] == p; i--)
+			left++;
+	return left + right - 1;
+	}
+	
+	private Player[] getColumn(int j) {
+		Player temp[] = new Player[n];
+		for (int i = 0; i < n; i++)
+			temp[i] = board[i][j];
+		return temp;
+	}
+	
+//	private int getHorizontal(int row,int col) {
+//		int left = 0, right = 0;
+//		Player p = board[row][col];
+//		for (int i = col; i < m && board[row][i] == p; i++)
+//			right++;
+//		for (int i = col; i >= 0 && board[row][i] == p; i--)
+//			left++;
+//	return left + right - 1;
+//	}
+//	
+//	private int getVertical(int row,int col) {
+//		int up = 0, down = 0;
+//		Player p = board[row][col];
+//		for (int i = row; i < n && board[i][col] == p; i++)
+//			down++;
+//		for (int i = row; i >= 0 && board[i][col] == p; i--)
+//			up++;
+//	return down + up - 1;
+//	}
+	
+//	public static void main(String[] args) {
+//		Player p1 = new Player("Bibi", 'B');
+//		Player p2 = new Player("Gantz", 'G');
+//		Board b = new Board(3, 4);
+//
+//		b.set(0, 0, p1);
+//		b.set(1, 0, p1);
+//		b.set(2, 2, p2);
+//		b.set(0, 0, p2);
+//		b.set(0, 1, p1);
+//		
+//		System.out.println(b.maxLineContaining(0, 0));
+//		System.out.println(b.maxLineContaining(0, 1));
+//		//System.out.println(b.Horizontal(0, 0));
+//		System.out.println(b);
+//		
+//	}
+}

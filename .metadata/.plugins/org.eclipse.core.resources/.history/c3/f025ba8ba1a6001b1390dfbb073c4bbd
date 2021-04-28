@@ -1,0 +1,17 @@
+package circuits;
+
+public class FalseGate extends Gate {
+	private static final String TRUE_GATE = "T";
+	private static FalseGate instance = null;
+	
+	private FalseGate() {
+		super(new FalseGate[] { FalseGate.instance });
+	}
+
+	public static Gate instance() {
+		if(instance == null)
+			instance = new FalseGate();
+		return instance;
+	}
+
+}

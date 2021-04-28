@@ -1,0 +1,14 @@
+package fghfgh;
+
+public class Util {
+	public static void reportAll(int[] a, Reporter[] rs) {
+		Reporter b = new ReporterDecorator(rs[0], rs[1]);
+		for (int i = 0; i < a.length; i++) {
+			System.out.println("a["+i+"] = " + a[i]);
+			for (int j = 0; j < rs.length; j++) {
+				b.addNumber(a[i]);
+				System.out.format("    %s : %d%n", b.report());
+			}
+		}
+	}
+}

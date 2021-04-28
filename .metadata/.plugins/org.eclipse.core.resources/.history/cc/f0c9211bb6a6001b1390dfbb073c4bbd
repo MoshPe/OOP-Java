@@ -1,0 +1,49 @@
+package circuits;
+
+public abstract class Gate {
+	protected Gate[] inGates;
+	
+	public Gate(Gate[] inGates) {
+		this.inGates = inGates;
+	}
+	
+	public boolean calc() {
+		if(inGates != null) {
+		boolean gates[] = new boolean[inGates.length];
+		for (int i = 0; i < gates.length; i++) {
+				if((inGates[i].getName()).equals("T"))
+					gates[i] = true;
+				else if((inGates[i].getName()).equals("F"))
+					gates[i] = false;
+				else
+					gates[i] = inGates[i].calc();
+			}
+		return func(gates);	
+		}
+		return func(new boolean[1]);
+	}
+
+	protected abstract boolean func(boolean[] inValues);
+	
+	public abstract String getName();
+	
+	public abstract Gate simplify();
+	
+	public String toString() {
+		StringBuilder returnFormula = new StringBuilder();
+		if(!(getName().equals("T")) && !(getName().equals("F"))) {
+			returnFormula.append(getName()+"[");
+		for (int i = 0; i < inGates.length; i++) {
+			if(inGates[i].getName().equals("T") ||inGates[i].getName().equals("F"))
+				returnFormula.append(inGates[i].getName());
+			else 
+				returnFormula.append(inGates[i].toString());
+			returnFormula.append(((i + 1) == inGates.length ? "" : ", "));
+		}
+		if(!(getName().equals("T") && getName().equals("F")))
+			returnFormula.append("]");
+		return returnFormula.toString();
+		}
+	return getName();
+	}
+}

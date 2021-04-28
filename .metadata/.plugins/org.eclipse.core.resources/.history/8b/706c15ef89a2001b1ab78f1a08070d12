@@ -1,0 +1,17 @@
+package Tree;
+
+public class OrangeTree extends Tree {
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected int costAtYear(int year) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

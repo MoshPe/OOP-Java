@@ -1,0 +1,13 @@
+package list;
+
+public class MainForNode {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Node n1 = new Node(1, null, null);
+		Node n2 = new Node(2, null, n1);
+		System.out.println(n1);
+		System.out.println(n2);
+	}
+
+}

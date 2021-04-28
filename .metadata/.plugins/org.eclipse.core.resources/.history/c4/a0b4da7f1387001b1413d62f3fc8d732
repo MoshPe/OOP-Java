@@ -1,0 +1,36 @@
+package a;
+
+public class Timer {
+	private int m,s;
+	
+	public Timer(int m, int s) {
+		this.m = m;
+		this.s = s;
+	}
+	
+	public Timer(int s) {
+		this.m = s/60;
+		this.s = s - m * 60;
+	}
+	
+	public boolean tickDown() {
+		if(m == 0 & s == 0)
+			return false;
+		if(s == 0) {
+			m--;
+			s=59;
+		}
+		else
+			s--;
+		return true;
+	}
+	
+	public Timer diff(Timer other) {
+		
+	}
+	
+	public String toString() { return "(" + m + ":" + s + ")"; }
+		
+	public int totalSeconds() { return s + m * 60; }
+
+}

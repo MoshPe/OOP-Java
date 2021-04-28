@@ -1,0 +1,25 @@
+package list;
+
+public class Node {
+	private int val;
+	private Node next, prev;
+	
+	public Node(int val, Node next, Node prev) {
+		this.val = val;
+		this.next = next;
+		this.prev = prev;
+		if (prev != null)
+				prev.next = this;
+		if (next != null)
+				next.prev = this;
+	}
+	public Node getPrev() { return prev; }
+	
+	public Node getNext() { return next; }
+	
+	public int getVal() { return val; }
+	
+	public String toString() { 
+			return String.format("%d %s %s",val, next, prev); 
+	}
+}

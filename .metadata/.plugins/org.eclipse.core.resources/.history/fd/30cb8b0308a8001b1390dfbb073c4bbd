@@ -1,0 +1,17 @@
+
+public class AverageReporter implements Reporter{
+	private List<int> numberArr = new List<>;
+
+	@Override
+	public void addNumber(int num) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int report() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

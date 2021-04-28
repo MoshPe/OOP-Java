@@ -1,0 +1,24 @@
+package Tree;
+
+public class OrangeTree extends Tree {
+	private static final String FIGG_TREE_NAME = "Orange";
+	private static final int MAINTAIN_PER_YEAR = 10;
+	
+	public OrangeTree() {
+		super(150);
+	}
+	
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected int costAtYear(int year) {
+		if(year <= 3)
+			return 100;
+		if(year >=6)
+			return (250 * 0.6);
+	}
+}

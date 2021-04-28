@@ -1,0 +1,13 @@
+package circuits;
+
+public class TrueGate  {
+	private static final String TRUE_GATE = "T";
+	private static Gate instance = null;
+	private TrueGate() {}
+	
+	public static Gate instance() {
+		if(instance == null)
+			instance = new Gate();
+		return instance;
+	}
+}

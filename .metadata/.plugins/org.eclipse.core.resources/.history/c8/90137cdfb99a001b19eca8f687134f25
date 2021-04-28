@@ -1,0 +1,95 @@
+package Game;
+
+import java.lang.StringBuilder;
+import java.lang.Math;
+
+public class Board {
+	protected Player[][] board;
+	protected int n,m;
+	
+	public Board(int n, int m) {
+		this.n = n;
+		this.m = m;
+		this.board = new Player[n][m];
+	}
+	
+	protected boolean set(int i, int j, Player p) {
+		if(!isEmpty(i,j))
+			return false;
+		board[i][j] = p;
+		return true;
+	}
+	
+	public boolean isEmpty(int i, int j) {
+		if(board[i][j] == null)
+			return true;
+		return false;
+	}
+	
+	public Player get(int i, int j) {
+		return board[i][j];
+	}
+	
+	public boolean isFull() {
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < m;j++) {
+				if(board[i][j] == null)
+					return false;
+				}
+			}
+		return true;
+	}
+	
+	public String toString() {
+		StringBuilder returnBoard = new StringBuilder();
+		for(int i = 0; i < n; i++) {
+			for(int j = 0; j < m;j++) {
+				if(board[i][j] == null)
+					returnBoard.append('.');
+				else
+					returnBoard.append(board[i][j].getMark());
+				}
+			returnBoard.append('\n');
+			}
+		return returnBoard.toString();
+	}
+
+	protected int maxLineContaining(int i, int j) {
+		int horizontal = getPlayerAppearances(board[i],m,board[i][j]);
+		int vertical = getPlayerAppearances(getColumn(j),n,board[i][j]);
+		
+		int mainDiagonal = getPlayerAppearances(getMainDiagonal(i,j),n+m,board[i][j]);
+		int secondaryDiagonal = getPlayerAppearances(getSecondaryDiagonal(i,j),n+m,board[i][j]);
+		
+	}
+	
+	private int Horizontal(int row,int col) {
+		int left = 0, right = 0;
+		Player p = board[row][col];
+		for (int i = col; i < m && board[row][i] == p; i++)
+			right++;
+		for (int i = col; i >= 0 && board[row][i] == p; i-)
+			right++;
+	
+	
+	}
+	
+	
+	public static void main(String[] args) {
+		Player p1 = new Player("Bibi", 'B');
+		Player p2 = new Player("Gantz", 'G');
+		Board b = new Board(3, 4);
+
+		b.set(0, 0, p1);
+		b.set(1, 0, p1);
+		b.set(2, 2, p2);
+		b.set(0, 0, p2);
+		b.set(0, 1, p1);
+		
+		System.out.println(b.Horizontal(0, 0));
+		System.out.println(b.Horizontal(2, 2));
+		//System.out.println(b.Horizontal(0, 0));
+		System.out.println(b);
+		
+	}
+}
