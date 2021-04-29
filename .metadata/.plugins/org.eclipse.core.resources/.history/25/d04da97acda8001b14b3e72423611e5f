@@ -1,0 +1,25 @@
+package images;
+
+public class Transpose extends ImageDecorator{
+	private Image base;
+	privat int width, height;
+	
+	public Transpose(Image base) {
+		super(base.getWidth(),base.getHeight());
+		this.width = width;
+		this.height = height;
+		this.base = base;	
+	}
+	
+	@Override
+	public RGB get(int x, int y) {
+		return base.get(y > width? width : y, xy > width? width : y);
+	}
+	
+	public static void main(String[] argc) {
+		Image i = (new Gradient(100, 200, RGB.BLUE,
+				 RGB.GREEN));	
+		Displayer.display(i);
+	}
+
+}

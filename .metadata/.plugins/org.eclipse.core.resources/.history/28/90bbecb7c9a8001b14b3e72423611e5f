@@ -1,0 +1,22 @@
+package images;
+
+public class Filter extends ImageDecorator{
+	private Image base;
+	private RGB filter;
+	
+	public Filter(int width, int height) {
+		super(width, height);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Filter(Image base, RGB filter) {
+		this.base = base;
+		this.filter = filter;
+	}
+	@Override
+	public RGB get(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

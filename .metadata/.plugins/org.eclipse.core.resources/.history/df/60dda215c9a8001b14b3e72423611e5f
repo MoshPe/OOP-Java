@@ -1,0 +1,23 @@
+package images;
+
+public abstract class ImageDecorator implements Image{
+
+	@Override
+	public int getWidth() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getHeight() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public RGB get(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

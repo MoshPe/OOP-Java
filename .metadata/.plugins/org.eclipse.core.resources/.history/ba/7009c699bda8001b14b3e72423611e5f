@@ -1,0 +1,20 @@
+package images;
+
+public class BaseImage implements Image{
+
+	@Override
+	public int getWidth() {
+		return 600; 
+	}
+
+	@Override
+	public int getHeight() {
+		return 300;
+	}
+
+	@Override
+	public RGB get(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

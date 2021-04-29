@@ -1,0 +1,20 @@
+package images;
+
+public class SuperPose extends BinaryImageDecorator{
+	private base1, base2;
+	
+	public SuperPose(Image base1, Image base2) {
+		super(base1.getWidth() > base2.getWidth()?base1.getWidth() : base2.getWidth(),
+				base1.getHeight() > base2.getHeight()?base1.getHeight() : base2.getHeight());
+		this.base1 = base1;
+		this.base2 = base2;
+	}
+
+	@Override
+	public RGB get(int x, int y) {
+		if(base1.get(x))
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

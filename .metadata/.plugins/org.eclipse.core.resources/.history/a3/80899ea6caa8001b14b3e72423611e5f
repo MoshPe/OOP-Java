@@ -1,0 +1,16 @@
+package images;
+
+public class Filter extends ImageDecorator{
+	private Image base;
+	private RGB filter;
+	
+	public Filter(Image base,RGB filter) {
+		this.base = base;
+		this.filter = filter;
+	}
+	@Override
+	public RGB get(int x, int y) {
+		return RGB.superpose(base.get(x, y), filter);
+	}
+
+}

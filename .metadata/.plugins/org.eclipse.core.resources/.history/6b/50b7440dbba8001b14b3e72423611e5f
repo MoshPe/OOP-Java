@@ -1,0 +1,8 @@
+package images;
+
+public class RGB {
+	
+	public RGB(double green, double red, double blue) {
+		
+	}
+}

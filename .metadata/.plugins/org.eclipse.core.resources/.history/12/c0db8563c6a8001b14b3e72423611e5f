@@ -1,0 +1,21 @@
+package images;
+
+public class Circle extends BaseImage{
+	private int centerY, centerX;
+	private RGB center, outside;
+	
+	public Circle(int width, int height, int centerX, int centerY, int radius, RGB center, RGB outside) {
+		this.centerX = centerX;
+		this.centerY = centerY;
+		this.center = center;
+		this.outside = outside;
+	}
+	public Circle(int size, int radius, RGB center, RGB outside) 
+	
+	@Override
+	public RGB get(int x, int y) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
