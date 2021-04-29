@@ -1,0 +1,11 @@
+package images;
+
+public class TwoColorImage extends BaseImage{
+	private RGB zero, one;
+	public TwoColorImage(int width, int height, RGB zero, RGB one, TwoDFunc func)
+ {
+		super(width, height);
+		// TODO Auto-generated constructor stub
+	}
+
+}

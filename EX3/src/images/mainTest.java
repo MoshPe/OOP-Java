@@ -2,6 +2,7 @@ package images;
 
 public class mainTest {
 	public static void main(String[] argc) {
+		/*
 		Image i1 = new Gradient(500, 500, RGB.BLUE, RGB.BLACK);
 		Image i2 = new Transpose(new Gradient(500, 500, RGB.RED, RGB.BLACK));
 		Image i3 = new Mix(i1, i2, 0.5);
@@ -14,7 +15,11 @@ public class mainTest {
 		Image i9 = new Superpose(i7, i8);
 
 		Displayer.display(i9);
-
-
+		*/
+		double x = 5.231;
+		double y = 9.231;
+		double z = 2.231;
+		
+		System.out.println(String.format("<%.4f, %.4f, %.4f>", x, y, z));
 	}
 }

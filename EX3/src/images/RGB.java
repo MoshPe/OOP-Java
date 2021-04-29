@@ -25,10 +25,10 @@ public class RGB {
 
 	public double getGreen() { return green; }
 
-	public RGB invert() { return new RGB(1-green,1-red,1-blue); }
+	public RGB invert() { return new RGB(1-red,1-green,1-blue); }
 	
 	public RGB filter(RGB filter) {
-		return new RGB(green * filter.getGreen(),red * filter.getRed(), blue * filter.getBlue());
+		return new RGB(red * filter.getRed(),green * filter.getGreen(), blue * filter.getBlue());
 	}
 	public static RGB superpose(RGB rgb1, RGB rgb2) {
 		double green = rgb1.getGreen() + rgb2.getGreen() > 1 ? 1 : rgb1.getGreen() + rgb2.getGreen();
@@ -45,6 +45,6 @@ public class RGB {
 	}
 	@Override
 	public String toString() {
-		return String.format("<%.4lf, %.4lf, %.4lf>", red, green, blue);
+		return String.format("<%.4f, %.4f, %.4f>",red,green, blue);
 	}
 }

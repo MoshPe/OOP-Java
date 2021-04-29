@@ -1,0 +1,5 @@
+package images;
+
+public class Func1 implements TwoDFunc{
+
+}
