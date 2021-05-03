@@ -22,7 +22,7 @@ public class Mix extends BinaryImageDecorator{
 			return base2.get(x, y);
 		return RGB.BLACK;
 	}
-	/*
+	
 	public static void main(String[] argc) {
 		Image i1 = new Gradient(100, 150, RGB.RED, 
 				RGB.WHITE);
@@ -31,5 +31,5 @@ public class Mix extends BinaryImageDecorator{
 				Image i = new Mix(i1,  i2, 0.7);
 				Displayer.display(i);
 	}
-	*/
+	
 }

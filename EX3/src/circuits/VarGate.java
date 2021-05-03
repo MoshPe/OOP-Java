@@ -2,7 +2,6 @@ package circuits;
 
 public class VarGate extends Gate {
 	private String name;
-	//private Boolean value;
 	private Gate value;
 		
 	public VarGate(String name) {
@@ -14,7 +13,7 @@ public class VarGate extends Gate {
 	@Override
 	protected boolean func(boolean[] inValues) throws CircuitException{
 		if(value == null)
-			throw new CircuitException("ohhh my' you aint smart tho :#");
+			throw new CircuitException();
 		return value.simplify().func(null);
 	}
 	

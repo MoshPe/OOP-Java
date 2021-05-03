@@ -16,11 +16,11 @@ public class Filter extends ImageDecorator {
 			return null;
 		return base.get(x, y).filter(filter);
 	}
-/*
+
 	public static void main(String[] argc) {
 	Image i = new Circle(120, 60, RGB.WHITE, RGB.BLACK);
 	Image i2 = new Filter(i, new RGB(0.5, 0, 1));
 	Displayer.display(i2);
 	}
-*/
+
 }

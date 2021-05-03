@@ -23,12 +23,12 @@ public class TwoColorImage extends BaseImage{
 		else
 			return RGB.mix(one,zero, temp);
 	}
-	/*
+	
 	public static void main(String[] argc) {
 		Image i = new TwoColorImage(200, 100, RGB.BLACK, 
 				RGB.RED, new Func1());
 				Displayer.display(i);
 
 	}
-	*/
+	
 }
