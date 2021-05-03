@@ -7,6 +7,7 @@ public class VarGate extends Gate {
 	public VarGate(String name) {
 		super(null);
 		this.name = name;
+		value = null;
 	}
 
 	@Override
