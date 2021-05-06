@@ -9,11 +9,6 @@ public abstract class BinaryImageDecorator implements Image {
 		this.height = height;
 	}
 	
-	public BinaryImageDecorator() {
-		this.width = 600;
-		this.height = 300;
-	}
-	
 	@Override
 	public int getWidth() {
 		return width; 

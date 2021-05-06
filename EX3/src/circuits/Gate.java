@@ -30,9 +30,6 @@ public abstract class Gate {
 		if((getName().equals("AND")) || (getName().equals("OR")) || (getName().equals("NOT"))) {
 			returnFormula.append(getName()+"[");
 		for (int i = 0; i < inGates.length; i++) {
-			if(inGates[i].getName().equals("T") ||inGates[i].getName().equals("F"))
-				returnFormula.append(inGates[i].getName());
-			else 
 				returnFormula.append(inGates[i].toString());
 			returnFormula.append(((i + 1) == inGates.length ? "" : ", "));
 		}

@@ -13,11 +13,7 @@ public class VarGate extends Gate {
 	@Override
 	protected boolean func(boolean[] inValues) throws CircuitException{
 		if(value == null)
-<<<<<<< HEAD
 			throw new CircuitException();
-=======
-			throw new CircuitException("^^");
->>>>>>> 4d53449f51915f7ce98078c832c7807b6d773789
 		return value.simplify().func(null);
 	}
 	
@@ -36,7 +32,7 @@ public class VarGate extends Gate {
 	@Override
 	public Gate simplify() {
 		if(value == null)
-			return null;
+			return this;
 		if(value instanceof TrueGate)
 			return TrueGate.instance();
 		return FalseGate.instance();

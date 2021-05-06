@@ -1,8 +1,0 @@
-package circuits;
-
-public class CircuitException extends Exception {
-	
-	public class CircuitException(String msg) {
-		super(msg);
-	}
-}
