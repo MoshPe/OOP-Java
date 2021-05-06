@@ -3,10 +3,12 @@ package images;
 public abstract class BinaryImageDecorator implements Image {
 
 	private int width,height;
+	private BaseImage a;
 	
 	public BinaryImageDecorator(int width, int height) {
 		this.width = width;
 		this.height = height;
+		a = new BaseImage(width,height);
 	}
 	
 	@Override
