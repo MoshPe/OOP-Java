@@ -1,8 +1,0 @@
-package ex;
-
-public class sdgasgdscv {
-	public static void main(String[] argc) {
-		Scorer[] ss = new Scorer[3];
-		
-	}
-}

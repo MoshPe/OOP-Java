@@ -27,17 +27,21 @@ public class Circle extends BaseImage{
 	public RGB get(int x, int y) {
 		if(x > getWidth() || y > getHeight())
 			return null;
-		double test = Point2D.distance(x, y, centerX, centerY) / (double)radius;
-		if(test < 1)
-			return RGB.mix(outside, center,test);
+		double distanceFromCenter = Point2D.distance(x, y, centerX, centerY) / radius;
+		if(distanceFromCenter < 1)
+			return RGB.mix(outside, center,distanceFromCenter);
 		else
 			return outside;
 	}
+	
 	/*
 	public static void main(String[] argc) {
-		Image i = new Circle(120, 60, RGB.WHITE, RGB.BLACK);
-		//Image i = new Circle(600, 300, 70, 70, 90, RGB.BLUE, new RGB(0.5, 0, 0.5));
+		//Image i = new Circle(120, 60, RGB.WHITE, RGB.BLACK);
+		Image i = new Circle(200, 100, 70, 70, 90, RGB.BLUE, 
+				new RGB(0.5, 0, 0.5));
 				Displayer.display(i);
 	}
 	*/
+	
+	
 }

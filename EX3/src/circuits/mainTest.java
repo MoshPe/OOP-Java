@@ -7,9 +7,10 @@ public class mainTest {
 		VarGate v2 = new VarGate("2");
 				
 		Gate g1 = new Or2Gate(FalseGate.instance(), TrueGate.instance());
+		Gate g3 = new Or2Gate(v1, new NotGate(v2)); 
 		Gate g2 = new Or2Gate(v1, new NotGate(v2)); 
 		
-		Gate out = new AndGate(new Gate[] { g1, g2, TrueGate.instance() });
+		Gate out = new AndGate(new Gate[] { g1, g2, TrueGate.instance() ,g3});
 		
 		//Gate g = FalseGate.instance();
 		//Gate g2 = TrueGate.instance();
