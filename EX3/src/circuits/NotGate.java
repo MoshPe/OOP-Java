@@ -21,17 +21,12 @@ public class NotGate extends Gate {
 
 	@Override
 	public Gate simplify() {
+		if(in instanceof NotGate)
+			return in.inGates[0].simplify();
 		if(!(in.simplify() instanceof FalseGate) && !(in.simplify() instanceof TrueGate))
-			return this;
+			return new NotGate(in);
 		if(in.simplify() instanceof TrueGate)
-			return  FalseGate.instance();
-		return  TrueGate.instance();
+			return FalseGate.instance();
+		return TrueGate.instance();
 	}
-	/*
-	public static void main(String[] argc) {
-		Gate[] gates =  { TrueGate.instance(), FalseGate.instance(), TrueGate.instance() };
-		Gate a = new AndGate(gates);
-		System.out.println(a.calc());
-	}*/
-
 }

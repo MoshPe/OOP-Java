@@ -11,15 +11,9 @@ public class Gradient extends BaseImage {
 
 	@Override
 	public RGB get(int x, int y) {
+		//checking if the given indexes are legal
 		if(x > getWidth() || y > getHeight())
 			return null;
 		return RGB.mix(start, end, (1 - (double)x/getWidth()));		
 	}
-	
-	public static void main(String[] argc) {
-		Image i = new Gradient(600, 320, RGB.RED, 
-				new RGB(1, 1, 0));
-				Displayer.display(i);
-	}
-	
 }

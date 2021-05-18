@@ -25,23 +25,14 @@ public class Circle extends BaseImage{
 	
 	@Override
 	public RGB get(int x, int y) {
+		//checking if the given indexes are legal
 		if(x > getWidth() || y > getHeight())
 			return null;
+		//calculate the distance from the middle coordinates
 		double distanceFromCenter = Point2D.distance(x, y, centerX, centerY) / radius;
 		if(distanceFromCenter < 1)
 			return RGB.mix(outside, center,distanceFromCenter);
 		else
 			return outside;
 	}
-	
-	/*
-	public static void main(String[] argc) {
-		//Image i = new Circle(120, 60, RGB.WHITE, RGB.BLACK);
-		Image i = new Circle(200, 100, 70, 70, 90, RGB.BLUE, 
-				new RGB(0.5, 0, 0.5));
-				Displayer.display(i);
-	}
-	*/
-	
-	
 }

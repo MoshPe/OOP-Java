@@ -4,6 +4,7 @@ public class TwoColorImage extends BaseImage{
 	private RGB zero, one;
 	private TwoDFunc func;
 	private int width,height;
+	
 	public TwoColorImage(int width, int height, RGB zero, RGB one, TwoDFunc func){
 		super(width, height);
 		this.zero = zero;
@@ -23,12 +24,4 @@ public class TwoColorImage extends BaseImage{
 		else
 			return RGB.mix(one,zero, temp);
 	}
-	
-	public static void main(String[] argc) {
-		Image i = new TwoColorImage(200, 100, RGB.BLACK, 
-				RGB.RED, new Func1());
-				Displayer.display(i);
-
-	}
-	
 }

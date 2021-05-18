@@ -1,8 +1,28 @@
 package images;
 
-public abstract class ImageDecorator extends BaseImage implements Image {
+public abstract class ImageDecorator implements Image {
 	
-	public ImageDecorator(int width, int height) {
-		super(width, height);
+	private int width,height;
+
+	public ImageDecorator(Image Base) {
+		width = Base.getWidth();
+		height = Base.getHeight();
 	}
+	public ImageDecorator(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
+
+	@Override
+	public int getWidth() {
+		return width;
+	}
+
+	@Override
+	public int getHeight() {
+		return height;
+	}
+
+	@Override
+	public abstract RGB get(int x, int y);
 }

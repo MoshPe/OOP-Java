@@ -4,8 +4,7 @@ public class Superpose extends BinaryImageDecorator{
 	private Image base1, base2;
 	
 	public Superpose(Image base1, Image base2) {
-		super(base1.getWidth() > base2.getWidth()?base1.getWidth() : base2.getWidth(),
-				base1.getHeight() > base2.getHeight()?base1.getHeight() : base2.getHeight());
+		super(base1, base2);
 		this.base1 = base1;
 		this.base2 = base2;
 	}

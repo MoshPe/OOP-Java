@@ -3,6 +3,7 @@ package images;
 public class Func1 implements TwoDFunc{
 
 	@Override
+	//function that normalize 2 numbers
 	public double f(double x, double y) {
 			if (x < 0.25)
 				return 0;

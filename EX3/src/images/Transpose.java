@@ -14,11 +14,4 @@ public class Transpose extends ImageDecorator {
 			return null;
 		return base.get(y > getWidth() ? getWidth() : y, x > getHeight() ? getHeight() : x);
 	}
-
-	public static void main(String[] argc) {
-		Image i = new Transpose(new Gradient(100, 200, RGB.BLUE,
-				 RGB.GREEN));	
-		Displayer.display(i);
-	}
-
 }

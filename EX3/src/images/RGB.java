@@ -30,6 +30,7 @@ public class RGB {
 	public RGB filter(RGB filter) {
 		return new RGB(red * filter.getRed(),green * filter.getGreen(), blue * filter.getBlue());
 	}
+	
 	public static RGB superpose(RGB rgb1, RGB rgb2) {
 		double green = rgb1.getGreen() + rgb2.getGreen() > 1 ? 1 : rgb1.getGreen() + rgb2.getGreen();
 		double blue = rgb1.getBlue() + rgb2.getBlue() > 1 ? 1 : rgb1.getBlue() + rgb2.getBlue();
