@@ -62,7 +62,7 @@ class CountrySk implements Comparable<Country> {
 	public int compareTo(Country o) {
 		return 0;
 	}
-	
+
 	@Optional
 	public boolean equals(Object other) {
 		return false;
@@ -82,9 +82,11 @@ class WorldSk {
 	public int population() {
 		return 0;
 	}
+
 	public String report() {
 		return null;
 	}
+
 	public List<City> smallCities(int under) {
 		return null;
 	}
