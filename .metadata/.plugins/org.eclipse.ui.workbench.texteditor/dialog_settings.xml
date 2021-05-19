@@ -6,6 +6,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value="returnString."/>
 		<list key="findhistory">
+			<item value="freq"/>
 			<item value="returnString"/>
 			<item value="indexOf"/>
 			<item value="Ereturn"/>
@@ -13,7 +14,6 @@
 			<item value="countDependecies"/>
 			<item value="taskize"/>
 			<item value="tasks"/>
-			<item value="count"/>
 		</list>
 		<list key="replacehistory">
 			<item value="returnString."/>
