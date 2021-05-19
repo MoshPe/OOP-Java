@@ -46,7 +46,7 @@ public class Country implements Comparable<Country> {
 		return name.compareTo(country.toString());
 	}
 
-	public boolean equals(Country country) {
+	public boolean equals(Object country) {
 		return name.equals(country.toString());
 	}
 
@@ -59,7 +59,7 @@ public class Country implements Comparable<Country> {
 			returnReport.append(city.getName() + "(");
 			returnReport.append(city.getPopulation() + "), ");
 		}
-		returnReport.setCharAt(returnReport.length() - 2, ' ');
+		returnReport.delete(returnReport.length() - 2, returnReport.length());
 		return returnReport.toString();
 	}
 }
