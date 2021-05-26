@@ -1,7 +1,6 @@
 package cities;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -33,7 +32,6 @@ public class Country implements Comparable<Country> {
 			if (city.getPopulation() < under)
 				populationUnder.add(city);
 		}
-		Collections.sort(populationUnder);
 		return populationUnder;
 	}
 

@@ -17,10 +17,13 @@ public class Place {
 	public int getY() {
 		return y;
 	}
-	public int hashCode(Place place) {
-		return (int) Math.pow(x, y);
+	
+	public int hashCode() {
+		return  Integer.hashCode(x) + Integer.hashCode(y) * 31;
 	}
-	public boolean equals(Place place) {
-		return this.hashCode() == place.hashCode();
+	
+	@Override
+	public boolean equals(Object place) {	
+		return this.hashCode() == ((Place)place).hashCode();
 	}
 }

@@ -1,13 +1,12 @@
 package cities;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class World {
-	private Map<String, Country> countries = new HashMap<>();
+	private Map<String, Country> countries = new TreeMap<>();
 
 	public void addCountry(String name) {
 		if (countries.containsKey(name))
@@ -32,7 +31,6 @@ public class World {
 		List<Country> sortCountries = new ArrayList<>();
 		for (Country country : countries.values())
 			sortCountries.add(country);
-		Collections.sort(sortCountries);
 		List<City> populationUnder = new ArrayList<>();
 		for (Country country : sortCountries)
 			populationUnder.addAll(country.smallCities(under));
