@@ -12,7 +12,6 @@ public class Equiv<E> {
 
 	 public void add(E e1, E e2) {
             // get each set in the set, check if one of the types is in department
-            Set<E> e1Set = null, e2Set = null;
             boolean isShown = false;
             int indexOfShownSet = -1;
             // get each set in the set, check if one of the types is in department
