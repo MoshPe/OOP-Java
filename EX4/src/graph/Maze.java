@@ -33,51 +33,40 @@ public class Maze implements GraphInterface<Place> {
 		return true;
 	}
 
-	public boolean isSolvable() throws GraphException {
+	public boolean isSolvable() {
 		Graph<Place> solveMaze = new Graph<>();
-		for (Place[] places : maze) {
-			for (Place place : places)
-				if (place != null)
-					solveMaze.addVertex(place);
-		}
-		for (int i = 0; i < maze.length - 1; i++) {
-			for (int j = 0; j < maze[i].length - 1; j++) {
-				if (maze[i][j] == null)
+		boolean isSolveAble = false;
+		try {
+			for (Place[] places : maze) {
+				for (Place place : places)
+					if (place != null)
+						solveMaze.addVertex(place);
+			}
+			for (int i = 0; i < maze.length - 1; i++) {
+				for (int j = 0; j < maze[i].length - 1; j++) {
+					if (maze[i][j] == null)
+						continue;
+					if (maze[i][j + 1] != null)
+						solveMaze.addEdge(maze[i][j], maze[i][j + 1]);
+					if (maze[i + 1][j] != null)
+						solveMaze.addEdge(maze[i][j], maze[i + 1][j]);
+				}
+				if (maze[i][maze[i].length - 1] != null && maze[i + 1][maze[i].length - 1] != null)
+					solveMaze.addEdge(maze[i][maze[i].length - 1], maze[i + 1][maze[i].length - 1]);
+			}
+
+			for (int j = 0; j < maze[0].length - 1; j++) {
+				if (maze[maze.length - 1][j] == null)
 					continue;
-				if (maze[i][j + 1] != null)
-					solveMaze.addEdge(maze[i][j], maze[i][j + 1]);
-				if (maze[i + 1][j] != null)
-					solveMaze.addEdge(maze[i][j], maze[i + 1][j]);
+				if (maze[maze.length - 1][j + 1] != null)
+					solveMaze.addEdge(maze[maze.length - 1][j], maze[maze.length - 1][j + 1]);
+				isSolveAble = solveMaze.connected(start, end);
+				
 			}
-			if (maze[i][maze[i].length - 1] != null && maze[i + 1][maze[i].length - 1] != null)
-				solveMaze.addEdge(maze[i][maze[i].length - 1], maze[i + 1][maze[i].length - 1]);
+		} catch (GraphException g) {
+			g.printStackTrace();
 		}
-
-		for (int j = 0; j < maze[0].length - 1; j++) {
-			if (maze[maze.length - 1][j] == null)
-				continue;
-			if (maze[maze.length - 1][j + 1] != null)
-				solveMaze.addEdge(maze[maze.length - 1][j], maze[maze.length - 1][j + 1]);
-		}
-		return solveMaze.connected(start, end);
-	}
-
-	public String toString() {
-		StringBuilder returnMaze = new StringBuilder();
-		for (Place[] places : maze) {
-			for (Place place : places) {
-				if (place == null)
-					returnMaze.append("@");
-				else if (place.equals(start))
-					returnMaze.append("S");
-				else if (place.equals(end))
-					returnMaze.append("E");
-				else
-					returnMaze.append(".");
-			}
-			returnMaze.append("\n");
-		}
-		return returnMaze.toString();
+		return isSolveAble;
 	}
 
 	@Override
@@ -98,12 +87,36 @@ public class Maze implements GraphInterface<Place> {
 		return neighbour;
 	}
 
-	/*
-	 * public static void main(String[] args) throws GraphException { Maze m = new
-	 * Maze(4, 0, 0, 3, 3); m.addWall(1, 1); m.addWall(3, 1); m.addWall(0, 1);
-	 * m.addWall(2, 3); m.addWall(2, 3); //m.addWall(3, 2); m.addWall(1, 3);
-	 * System.out.println(m); System.out.println(m.isSolvable());
-	 * ConnectionChecker<Place> cc = new ConnectionChecker<>(m);
-	 * System.out.println(cc.check(new Place(0, 0, 4), new Place(3, 3, 4))); }
-	 */
+	public String toString() {
+		StringBuilder returnMaze = new StringBuilder();
+		for (Place[] places : maze) {
+			for (Place place : places) {
+				if (place == null)
+					returnMaze.append("@");
+				else if (place.equals(start))
+					returnMaze.append("S");
+				else if (place.equals(end))
+					returnMaze.append("E");
+				else
+					returnMaze.append(".");
+			}
+			returnMaze.append("\n");
+		}
+		return returnMaze.toString();
+	}
+
+//	public static void main(String[] args) throws GraphException {
+//		Maze m = new Maze(4, 0, 0, 3, 3);
+//		m.addWall(1, 1);
+//		m.addWall(3, 1);
+//		m.addWall(0, 1);
+//		m.addWall(2, 3);
+//		m.addWall(2, 3); // m.addWall(3, 2);
+//		m.addWall(1, 3);
+//		System.out.println(m);
+//		System.out.println(m.isSolvable());
+//		ConnectionChecker<Place> cc = new ConnectionChecker<>(m);
+//		System.out.println(cc.check(new Place(0, 0, 4), new Place(3, 3, 4)));
+//	}
+
 }

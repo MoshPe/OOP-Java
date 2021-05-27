@@ -17,13 +17,13 @@ public class Place {
 	public int getY() {
 		return y;
 	}
-	
+
 	public int hashCode() {
-		return  Integer.hashCode(x) + Integer.hashCode(y) * 31;
+		return Integer.hashCode(x) * 17 + Integer.hashCode(y) * 31;
 	}
-	
+
 	@Override
-	public boolean equals(Object place) {	
-		return this.hashCode() == ((Place)place).hashCode();
+	public boolean equals(Object place) {
+		return this.hashCode() == ((Place) place).hashCode();
 	}
 }

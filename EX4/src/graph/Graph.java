@@ -27,8 +27,6 @@ public class Graph<V> {
 	}
 
 	public boolean hasEdge(V v1, V v2) {
-		if(edges.get(v1).isEmpty())
-			return false;
 		return edges.get(v1).contains(v2);
 	}
 

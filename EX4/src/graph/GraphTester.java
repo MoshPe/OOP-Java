@@ -152,7 +152,7 @@ public class GraphTester extends Tester {
 		checkThrows(() -> g.connected("A", "W"), GraphException.class, "connected() with non-existent vertex");
 	}
 
-	void testMaze2() throws GraphException {
+	void testMaze2() {
 		initPublishedTest("Maze from simpleMaze() [see code above]");
 		Maze m = simpleMaze();
 		checkEq(m.isSolvable(), true, "isSolvable()");

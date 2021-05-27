@@ -4,8 +4,9 @@
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="returnString."/>
+		<item key="selection" value="walls"/>
 		<list key="findhistory">
+			<item value="walls"/>
 			<item value="freq"/>
 			<item value="returnString"/>
 			<item value="indexOf"/>
@@ -13,7 +14,6 @@
 			<item value="help"/>
 			<item value="countDependecies"/>
 			<item value="taskize"/>
-			<item value="tasks"/>
 		</list>
 		<list key="replacehistory">
 			<item value="returnString."/>
