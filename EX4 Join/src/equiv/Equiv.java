@@ -13,22 +13,23 @@ public class Equiv<E> {
 	 public void add(E e1, E e2) {
             // get each set in the set, check if one of the types is in department
             Set<E> e1Set = null, e2Set = null;
+            boolean isShown = false;
+            int indexOfShownSet = -1;
+            // get each set in the set, check if one of the types is in department
             for (Set<E> set : list) {
-                if (set.contains(e1)) {
-                    set.add(e2);
-                    e1Set = set;
-                }
-                else if (set.contains(e2)) {
-                    set.add(e1);
-                    e2Set = set;
+                if (set.contains(e1) || set.contains(e2)) {
+                    if (isShown)
+                        list.get(indexOfShownSet).addAll(set);
+                    else {
+                        indexOfShownSet = list.indexOf(set);
+                        isShown = true;
+                        set.add(e1);
+                        set.add(e2);
+                    }
                 }
             }
-            if(e1Set != null && e2Set != null){
-                e1Set.addAll(e2Set);
-                list.remove(e2Set);
-            }
-            // else, make new department with both of them
-            else if(e1Set == null && e2Set == null) {
+            if (!isShown) {
+                // else, make new department with both of them
                 Set<E> temp = new HashSet<>();
                 temp.add(e2);
                 temp.add(e1);
