@@ -28,11 +28,8 @@ public class World {
 	}
 
 	public List<City> smallCities(int under) {
-		List<Country> sortCountries = new ArrayList<>();
-		for (Country country : countries.values())
-			sortCountries.add(country);
 		List<City> populationUnder = new ArrayList<>();
-		for (Country country : sortCountries)
+		for (Country country : countries.values())
 			populationUnder.addAll(country.smallCities(under));
 		return populationUnder;
 	}

@@ -30,7 +30,9 @@ public class City implements Comparable<City> {
 
 	@Override
 	public int compareTo(City city) {
-		return name.compareTo(city.getName());
+		if (country.compareTo(city.getCountry()) == 0)
+			return name.compareTo(city.getName());
+		return -1;
 	}
 
 	public boolean equals(Object city) {

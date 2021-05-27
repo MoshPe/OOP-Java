@@ -11,7 +11,8 @@ public class Piano extends Instrument{
 	public int getOctaves() {
 		return octaves;
 	}
-
+	
+	@Override
 	public String toString() {
 		return String.format("Piano(%d octaves) %s(%d), price = %d", octaves, getCompany(),getSerial(), getPrice());
 	}
