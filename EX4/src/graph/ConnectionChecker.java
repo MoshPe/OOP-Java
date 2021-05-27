@@ -15,6 +15,8 @@ public class ConnectionChecker<V> {
 	public boolean check(V v1, V v2) {
 		if (v1.equals(v2) || v2.equals(v1))
 			return true;
+		if(graph.neighbours(v1).isEmpty())
+			return false;
 		runDFS = new HashSet<>();
 		DFS(v1, v2);
 		return isConnected;

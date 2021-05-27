@@ -2,8 +2,6 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Maze implements GraphInterface<Place> {
 	private Place[][] maze;
@@ -69,13 +67,13 @@ public class Maze implements GraphInterface<Place> {
 		for (Place[] places : maze) {
 			for (Place place : places) {
 				if (place == null)
-					returnMaze.append("@ ");
+					returnMaze.append("@");
 				else if (place.equals(start))
-					returnMaze.append("S ");
+					returnMaze.append("S");
 				else if (place.equals(end))
-					returnMaze.append("E ");
+					returnMaze.append("E");
 				else
-					returnMaze.append(". ");
+					returnMaze.append(".");
 			}
 			returnMaze.append("\n");
 		}
@@ -99,21 +97,13 @@ public class Maze implements GraphInterface<Place> {
 			neighbour.add(maze[getX - 1][getY]);
 		return neighbour;
 	}
-	
+
 	/*
-	public static void main(String[] args) throws GraphException {
-		Maze m = new Maze(4, 0, 0, 3, 3);
-		 m.addWall(1, 1);
-		 m.addWall(3, 1);
-		 m.addWall(0, 1);
-		 m.addWall(2, 3);
-		 m.addWall(2, 3);
-		 //m.addWall(3, 2);
-		 m.addWall(1, 3);
-		System.out.println(m);
-		System.out.println(m.isSolvable());
-		ConnectionChecker<Place> cc = new ConnectionChecker<>(m);
-		System.out.println(cc.check(new Place(0, 0, 4), new Place(3, 3, 4)));
-	}
-	*/
+	 * public static void main(String[] args) throws GraphException { Maze m = new
+	 * Maze(4, 0, 0, 3, 3); m.addWall(1, 1); m.addWall(3, 1); m.addWall(0, 1);
+	 * m.addWall(2, 3); m.addWall(2, 3); //m.addWall(3, 2); m.addWall(1, 3);
+	 * System.out.println(m); System.out.println(m.isSolvable());
+	 * ConnectionChecker<Place> cc = new ConnectionChecker<>(m);
+	 * System.out.println(cc.check(new Place(0, 0, 4), new Place(3, 3, 4))); }
+	 */
 }

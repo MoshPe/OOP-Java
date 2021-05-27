@@ -14,36 +14,20 @@ public class Graph<V> {
 		if (vertices.contains(v))
 			throw new GraphException("There is an existing vertex");
 		vertices.add(v);
+		edges.put(v, new HashSet<>());
 	}
 
 	public void addEdge(V v1, V v2) throws GraphException {
-		Set<V> temp;
 		if (!vertices.contains(v1) || !vertices.contains(v2))
 			throw new GraphException("A vertex is missing from the graph");
 		if (hasEdge(v1, v2) || hasEdge(v2, v1))
 			throw new GraphException("The edge is already exist in the graph");
-		if(edges.get(v1) == null) {
-			temp = new HashSet<>();
-			temp.add(v2);
-			edges.put(v1,temp);
-			temp = new HashSet<>();
-			temp.add(v1);
-			edges.put(v2,temp);
-		}
-		else {
-			edges.get(v1).add(v2);
-			if(edges.get(v2) == null) {
-				temp = new HashSet<>();
-				temp.add(v1);
-				edges.put(v2,temp);		
-			}
-			else
-				edges.get(v2).add(v1);
-		}
+		edges.get(v1).add(v2);
+		edges.get(v2).add(v1);
 	}
 
 	public boolean hasEdge(V v1, V v2) {
-		if(edges.get(v1) == null)
+		if(edges.get(v1).isEmpty())
 			return false;
 		return edges.get(v1).contains(v2);
 	}
@@ -59,7 +43,7 @@ public class Graph<V> {
 	}
 	
 	private void small_DFS(V start, V end){
-		if(edges.get(start) == null)
+		if(edges.get(start).isEmpty())
 			return;
 		for (V v : edges.get(start)) {
 			if(v.equals(end)) {
