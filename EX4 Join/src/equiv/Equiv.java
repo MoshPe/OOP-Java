@@ -14,7 +14,6 @@ public class Equiv<E> {
             // get each set in the set, check if one of the types is in department
             boolean isShown = false;
             int indexOfShownSet = -1;
-            // get each set in the set, check if one of the types is in department
             for (Set<E> set : list) {
                 if (set.contains(e1) || set.contains(e2)) {
                     if (isShown)

@@ -6,7 +6,8 @@ public class Place {
 	private int x, y;
 
 	public Place(int x, int y, int bound) {
-		if (x < 0 || x >= bound || y < 0 || y >= bound)	//if x,y are not inside the bound
+		//if x,y are not inside the bound
+		if (x < 0 || x >= bound || y < 0 || y >= bound)	
 			throw new IllegalArgumentException();
 		this.x = x;
 		this.y = y;

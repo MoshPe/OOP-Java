@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+//This class represent a graph with vertices and edges
 public class Graph<V> {
 	private Set<V> vertices = new HashSet<>();
 	private Map<V, Set<V>> edges = new HashMap<V, Set<V>>();
@@ -35,15 +36,20 @@ public class Graph<V> {
 			throw new GraphException("A vertex is missing from the graph");
 		if(hasEdge(v1,v2))
 			return true;
+		//creating A new set to save the vertices
+		//as the program going through all the edges and vertices
 		runDFS = new HashSet<>();
 		small_DFS(v1, v2);
 		return runDFS.contains(v2);
 	}
 	
+	//Running the DFS algorithm
 	private void small_DFS(V start, V end){
 		if(edges.get(start).isEmpty())
 			return;
+		//Going through all the vertices that connected to the start vertex
 		for (V v : edges.get(start)) {
+			//if we found a connection we put it in the set and return
 			if(v.equals(end)) {
 				runDFS.add(v);
 				return;
