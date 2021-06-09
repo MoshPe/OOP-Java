@@ -24,11 +24,13 @@ public class ConnectionChecker<V> {
 			return true;
 		if (graph.neighbours(v1).isEmpty())
 			return false;
+		//creating A new set to save the vertices
 		runDFS = new HashSet<>();
 		DFS(v1, v2);
 		return isConnected;
 	}
 
+	//Running the simple DFS algorithm
 	private void DFS(V start, V end) {
 		for (V v : graph.neighbours(start)) {
 			if (v.equals(end)) {

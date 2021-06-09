@@ -26,8 +26,8 @@ public class Equiv<E> {
                     }
                 }
             }
+            // else, make new department with both of them
             if (!isShown) {
-                // else, make new department with both of them
                 Set<E> temp = new HashSet<>();
                 temp.add(e2);
                 temp.add(e1);
