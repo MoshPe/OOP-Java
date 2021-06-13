@@ -6,9 +6,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 public class MyController {
@@ -16,19 +19,7 @@ public class MyController {
 	private MainMain root;
 	private Alert alert;
 
-	public void setRootApplication(MainMain root, HBox test) {
-		this.root = root;
-		test.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
-			if (ev.getCode() == KeyCode.ENTER) {
-				resetButton.fire();
-				ev.consume();
-			}
-		});
-	}
-	
-	private void enterPressed(KeyEvent event) {
-		
-	}
+
 
 	@FXML
 	private Button resetButton;
@@ -50,6 +41,30 @@ public class MyController {
 
 	@FXML
 	private TextField minesText;
+	
+    @FXML
+    private ImageView pic;
+    
+	public void setRootApplication(MainMain root, HBox test) {
+		this.root = root;
+		test.addEventHandler(KeyEvent.KEY_PRESSED, ev -> {
+			if (ev.getCode() == KeyCode.ENTER) {
+				resetButton.fire();
+				ev.consume();
+			}
+		});
+		
+		Image i = new Image("https://giffiles.alphacoders.com/266/2669.gif");
+        pic.setImage(i);
+        pic.setFitWidth(260);
+        pic.setFitHeight(700);
+        Rectangle clip = new Rectangle();
+        clip.setWidth(260);
+        clip.setHeight(300);
+        clip.setArcHeight(200);
+        clip.setArcWidth(200);
+        pic.setClip(clip);
+	}
 
 	@FXML
 	void resetMines(ActionEvent event) {

@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -26,7 +27,7 @@ public class MainMain extends Application {
 	private HBox minesGame;
 	private Mines newGame;
 	private MyController controller;
-	private Image flag, bomb;
+	private Image flag, bomb, coolGif;
 	private Alert win, lose;
 	private boolean mineOpened = false;
 
@@ -48,20 +49,33 @@ public class MainMain extends Application {
 				"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Flag_icon_orange_4.svg/547px-Flag_icon_orange_4.svg.png");
 		bomb = new Image(
 				"https://w7.pngwing.com/pngs/220/369/png-transparent-minesweeper-pro-classic-mine-sweeper-minesweeper-plus-likeminesweeper-bomb-game-computer-wallpaper-video-game-thumbnail.png");
-
+		coolGif = new Image("https://thumbs.gfycat.com/ImaginativeMintyLabradorretriever-size_restricted.gif");
+		ImageView gif = new ImageView(coolGif);
+		gif.setFitHeight(100);
+		gif.setFitWidth(100);
+		
 		win = new Alert(AlertType.INFORMATION);
 		win.setTitle("Results");
 		win.setHeaderText(null);
 		win.setContentText("OHH MY!\n	 YoU WoN!!");
+		//alertInit(win, "HAHA!\n\t\tYou Lost!!");
 
 		lose = new Alert(AlertType.INFORMATION);
 		lose.setTitle("Results");
 		lose.setHeaderText(null);
 		lose.setContentText("HAHA!\n	 You Lost!!");
+		//alertInit(lose, "HAHA!\n	 You Lost!!");
 		stage.setTitle("Mines");
-		newGrid(10, 10, 50);
+		newGrid(20, 20, 50);
 		stage.setScene(scene);
 		stage.show();
+	}
+	
+	private void alertInit(Alert alert, String strToInput) {
+		alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Results");
+		alert.setHeaderText(null);
+		alert.setContentText(strToInput);
 	}
 
 	public void newGrid(int width, int height, int minesAmount) {
@@ -88,6 +102,7 @@ public class MainMain extends Application {
 			this.j = j;
 			setText(newGame.get(i, j));
 			setMinSize(40, 40);
+			setPadding(new Insets(0));
 			setFont(Font.font("System", FontWeight.BOLD, 15));
 			setOnMouseClicked(new leftButton());
 		}
@@ -102,8 +117,8 @@ public class MainMain extends Application {
 						setText("");
 						setGraphic(new ImageView(flag) {
 							{
-								setFitWidth(10);
-								setFitHeight(10);
+								setFitWidth(38);
+								setFitHeight(38);
 							}
 						});
 					} else if (!newGame.get(i, j).equals("X")) {
@@ -121,8 +136,8 @@ public class MainMain extends Application {
 							b.setText("");
 							b.setGraphic(new ImageView(bomb) {
 								{
-									setFitWidth(20);
-									setFitHeight(20);
+									setFitWidth(38);
+									setFitHeight(38);
 								}
 							});
 						} else if (!newGame.get(b.i, b.j).equals("F"))

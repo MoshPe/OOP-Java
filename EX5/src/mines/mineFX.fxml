@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,7 +16,10 @@
    <children>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" spacing="30.0">
          <children>
-            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetMines" prefHeight="50.0" prefWidth="100.0" style="-fx-font-size: 20; -fx-background-radius: 60;" text="Reset" />
+            <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetMines" prefHeight="50.0" prefWidth="100.0" style="-fx-font-size: 20; -fx-background-radius: 150; -fx-font-weight: bold;" text="Reset">
+               <font>
+                  <Font name="System Bold Italic" size="22.0" />
+               </font></Button>
             <GridPane prefHeight="123.0" prefWidth="241.0">
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -46,6 +51,10 @@
                   <TextField fx:id="minesText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
+            <ImageView fx:id="pic" fitHeight="157.0" fitWidth="211.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets left="2.0" right="2.0" />
+               </VBox.margin></ImageView>
          </children>
       </VBox>
    </children>
