@@ -27,7 +27,7 @@ public class MainMain extends Application {
 	private HBox minesGame;
 	private Mines newGame;
 	private MyController controller;
-	private Image flag, bomb, coolGif;
+	private Image flag, bomb, coolGif, test = new Image("https://tutorialflow.com/wp-content/uploads/2018/12/t.png");
 	private Alert win, lose;
 	private boolean mineOpened = false;
 
@@ -53,24 +53,24 @@ public class MainMain extends Application {
 		ImageView gif = new ImageView(coolGif);
 		gif.setFitHeight(100);
 		gif.setFitWidth(100);
-		
+
 		win = new Alert(AlertType.INFORMATION);
 		win.setTitle("Results");
 		win.setHeaderText(null);
 		win.setContentText("OHH MY!\n	 YoU WoN!!");
-		//alertInit(win, "HAHA!\n\t\tYou Lost!!");
+		// alertInit(win, "HAHA!\n\t\tYou Lost!!");
 
 		lose = new Alert(AlertType.INFORMATION);
 		lose.setTitle("Results");
 		lose.setHeaderText(null);
 		lose.setContentText("HAHA!\n	 You Lost!!");
-		//alertInit(lose, "HAHA!\n	 You Lost!!");
+		// alertInit(lose, "HAHA!\n You Lost!!");
 		stage.setTitle("Mines");
 		newGrid(20, 20, 50);
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+
 	private void alertInit(Alert alert, String strToInput) {
 		alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Results");
@@ -100,11 +100,17 @@ public class MainMain extends Application {
 		private button(int i, int j) {
 			this.i = i;
 			this.j = j;
-			setText(newGame.get(i, j));
+			// setText(newGame.get(i, j));
 			setMinSize(40, 40);
 			setPadding(new Insets(0));
 			setFont(Font.font("System", FontWeight.BOLD, 15));
 			setOnMouseClicked(new leftButton());
+			setGraphic(new ImageView(test) {
+				{
+					setFitWidth(38);
+					setFitHeight(38);
+				}
+			});
 		}
 
 		class leftButton implements EventHandler<MouseEvent> {
@@ -122,8 +128,17 @@ public class MainMain extends Application {
 							}
 						});
 					} else if (!newGame.get(i, j).equals("X")) {
-						setGraphic(null);
-						setText(newGame.get(i, j));
+						if (newGame.get(i, j).equals("."))
+							setGraphic(new ImageView(test) {
+								{
+									setFitWidth(38);
+									setFitHeight(38);
+								}
+							});
+						else {
+							setGraphic(null);
+							setText(newGame.get(i, j));
+						}
 					}
 				} else {
 					if (!newGame.open(i, j)) {
@@ -140,8 +155,19 @@ public class MainMain extends Application {
 									setFitHeight(38);
 								}
 							});
-						} else if (!newGame.get(b.i, b.j).equals("F"))
-							b.setText(newGame.get(b.i, b.j));
+						} else if (!newGame.get(b.i, b.j).equals("F")) {
+							if (newGame.get(b.i, b.j).equals("."))
+								b.setGraphic(new ImageView(test) {
+									{
+										setFitWidth(38);
+										setFitHeight(38);
+									}
+								});
+							else {
+								b.setGraphic(null);
+								b.setText(newGame.get(b.i, b.j));
+							}
+						}
 					}
 				}
 				if (newGame.isDone()) {
