@@ -30,6 +30,7 @@ public class Main extends Application {
     private ImageView imageView;
     private Label counterLabel;
 
+    //constructor to init all the components
     public yarVsOfra(){
         counterLabel = new Label("0");
         root = new VBox();
@@ -45,36 +46,46 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             initRoot();
+            //resize Ofra button
             ofraFans.setPrefWidth(100);
-            yardenaFans.setPrefWidth(100);
             ofraFans.setPrefHeight(50);
+             //resize Yardena button
+            yardenaFans.setPrefWidth(100);
             yardenaFans.setPrefHeight(50);
             initCounterLabel();
             initHbox();
+            //adding all components to a VBox
             root.getChildren().addAll(buttons, counterLabel);
-
+            
+            //class for increase the counter if Ofra was chosen
             class counterIncrease implements EventHandler<ActionEvent>{
                 @Override
                 public void handle(ActionEvent event) {
                     counter++;
+                    //change the image based on the fans counter
                     if(counter > 0)
                         imageView.setImage(ofra);
+                     //Reseting the image to question mark
                     if(counter == 0)
                         imageView.setImage(questionMark);
                     counterLabel.setText(""+counter);
                 }
             }
+            //class for decrease the counter if Yardena was chosen
             class counterDecrease implements EventHandler<ActionEvent>{
                 @Override
                 public void handle(ActionEvent event) {
                     counter--;
+                    //change the image based on the fans counter
                     if(counter < 0)
                         imageView.setImage(yardena);
+                     //Reseting the image to question mark
                     if(counter == 0)
                         imageView.setImage(questionMark);
                     counterLabel.setText(""+counter);
                 }
             }
+            //setting the button action to each handler
             ofraFans.setOnAction(new counterIncrease());
             yardenaFans.setOnAction(new counterDecrease());
             root.setSpacing(5);
@@ -90,7 +101,8 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+    
+    //Initiating HBox properties
     private void initHbox(){
         imageView = new ImageView(questionMark);
         imageView.setFitHeight(120);
@@ -98,14 +110,15 @@ public class Main extends Application {
         buttons.setSpacing(40);
         buttons.getChildren().addAll(ofraFans,imageView,yardenaFans);
     }
-
+    
+    //Initiating root properties(VBox)
     private void initRoot(){
         root.setPrefWidth(400);
         root.setPrefHeight(200);
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(10));
     }
-
+//Initiating the label properties that display the counter
     private void initCounterLabel(){
         counterLabel.setText(""+counter);
         counterLabel.setStyle("-fx-background-color:red;");
