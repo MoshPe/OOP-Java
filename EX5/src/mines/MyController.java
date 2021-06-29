@@ -111,7 +111,7 @@ public class MyController {
 			alert.setHeaderText(null);
 			alert.setContentText("Wrong numbers!!");
 			alert.showAndWait();
-			root.newGrid(10	, 10, 20);
+			root.newGrid(20	, 20, 100);
 			return;
 		}
 		root.newGrid(widths, heights, minesAmounts);
